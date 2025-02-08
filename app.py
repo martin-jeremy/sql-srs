@@ -1,6 +1,8 @@
+import duckdb
 import streamlit as st
 import pandas as pd
 
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 
 
 def app():
@@ -10,8 +12,14 @@ def app():
 
     with tab1:
         st.header('Test input:')
-        input_text = st.text_area('Input text:')
-        st.write(input_text)
+        input_query = st.text_area('Input query:')
+        if input_query:
+            result = duckdb.execute(input_query)
+        st.write(input_query)
+        st.subheader('iris table:')
+        st.write(iris)
+        st.subheader('queried results:')
+        st.write(result)
 
     with tab2:
         st.header('Dog:')
