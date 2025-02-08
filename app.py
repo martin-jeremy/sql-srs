@@ -1,6 +1,8 @@
+import duckdb
 import streamlit as st
 import pandas as pd
 
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 
 
 def app():
@@ -9,8 +11,15 @@ def app():
     tab1, tab2, tab3, tab4 = st.tabs(['Cat', 'Dog', 'Owl', 'Bat'])
 
     with tab1:
-        st.header('Chat:')
-        st.image('https://cdn.midjourney.com/91aefdc1-43b0-401a-ac4b-172799b0bfab/0_0.png', width=200)
+        st.header('Test input:')
+        input_query = st.text_area('Input query:')
+        if input_query:
+            result = duckdb.execute(input_query)
+        st.write(input_query)
+        st.subheader('iris table:')
+        st.write(iris)
+        st.subheader('queried results:')
+        st.write(result)
 
     with tab2:
         st.header('Dog:')
