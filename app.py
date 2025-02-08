@@ -6,9 +6,15 @@ iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/maste
 
 
 def app():
-    st.write("Hello world!")
+    st.write("""
+# SQL SRS
+Spaced Repetition System SQL practicer
+    """)
 
     tab1, tab2, tab3, tab4 = st.tabs(['Cat', 'Dog', 'Owl', 'Bat'])
+
+    with st.sidebar:
+        st.write('menu')
 
     with tab1:
         st.header('Test input:')
