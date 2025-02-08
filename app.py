@@ -9,8 +9,9 @@ def app():
     tab1, tab2, tab3, tab4 = st.tabs(['Cat', 'Dog', 'Owl', 'Bat'])
 
     with tab1:
-        st.header('Chat:')
-        st.image('https://cdn.midjourney.com/91aefdc1-43b0-401a-ac4b-172799b0bfab/0_0.png', width=200)
+        st.header('Test input:')
+        input_text = st.text_area('Input text:')
+        st.write(input_text)
 
     with tab2:
         st.header('Dog:')
